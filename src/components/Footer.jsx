@@ -2,8 +2,12 @@ const Footer = () => {
   return (
     <footer className="bg-[#292828] text-yellow-50 ">
       <div className="flex flex-col items-center justify-center">
-        <div className="mb-4">
-          <img src="/path/to/logo.png" alt="Logo" className="h-10 mr-3" />
+        <div className="mb-4 mt-5">
+          <img
+            src="/path/to/logo.png"
+            alt="Logo"
+            className=" bg-slate-900 p-4 rounded-md h-10 mr-3"
+          />
         </div>
         <div className="w-[670px] text-center mb-10 text-white text-lg font-light leading-[150%] font-circular">
           <p>
@@ -12,7 +16,7 @@ const Footer = () => {
             and hustle towards a healthier you.
           </p>
         </div>
-        <div className="flex space-x-4 font-bold font-serif text-2xl mb-4">
+        <div className="flex space-x-4 mt-28 mb-10 font-bold font-serif text-2xl ">
           <a href="#" className="hover:text-yellow-400">
             OUR PLANS
           </a>
@@ -29,7 +33,7 @@ const Footer = () => {
             ABOUT US
           </a>
         </div>
-        <div className="flex space-x-4 mb-4">
+        <div className="flex space-x-4 mt-16 mb-4">
           <img
             alt="svgImg"
             src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAsMCwyNTYsMjU2IgpzdHlsZT0iZmlsbDojMDAwMDAwOyI+CjxnIGZpbGw9IiMzMzlhZjAiIGZpbGwtcnVsZT0ibm9uemVybyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1saW5lY2FwPSJidXR0IiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1kYXNoYXJyYXk9IiIgc3Ryb2tlLWRhc2hvZmZzZXQ9IjAiIGZvbnQtZmFtaWx5PSJub25lIiBmb250LXdlaWdodD0ibm9uZSIgZm9udC1zaXplPSJub25lIiB0ZXh0LWFuY2hvcj0ibm9uZSIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPjxnIHRyYW5zZm9ybT0ic2NhbGUoOCw4KSI+PHBhdGggZD0iTTE5LjI1MzkxLDJjLTMuOTQyLDAgLTYuMjUzOTEsMi4wODIxNyAtNi4yNTM5MSw2LjgyNjE3djQuMTczODNoLTV2NWg1djEyaDV2LTEyaDRsMSwtNWgtNXYtMy4zMjgxMmMwLC0xLjc4NyAwLjU4Mjc3LC0yLjY3MTg3IDIuMjU5NzcsLTIuNjcxODdoMi43NDAyM3YtNC43OTQ5MmMtMC40NzQsLTAuMDY0IC0xLjg1NTA5LC0wLjIwNTA4IC0zLjc0NjA5LC0wLjIwNTA4eiI+PC9wYXRoPjwvZz48L2c+Cjwvc3ZnPg=="

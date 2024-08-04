@@ -17,17 +17,25 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    // Implement login logic here
     console.log("Logging in with:", loginInfo);
   };
 
   return (
     <div className="flex flex-col justify-center items-center m-10">
-      <div>
-        <h1 className="text-2xl font-bold text-black">Customer Login</h1>
-        <p className="text-black">Lorem ipsum dolor, sit amet consectetur</p>
+      <div className="flex flex-col p-5 justify-center items-center">
+        <img
+          src="https://rushfitness.in/img/icons/login.png"
+          alt="Login Icon"
+          className="p-5 w-28"
+        />
+        <h1 className="text-3xl font-mono uppercase font-bold text-yellow-50">
+          Customer Login
+        </h1>
+        <p className="text-yellow-50 text-sm">
+          Lorem ipsum dolor, sit amet consectetur
+        </p>
       </div>
-      <div className="m-4 p-10 border rounded-xl bg-gradient-to-tl from-gray-800 via-slate-500 to-gray-600">
+      <div className="m-4 p-10 border rounded-xl border-gray-700 bg-custom-linear-gradient">
         <form onSubmit={handleLogin}>
           <div>
             <input
@@ -36,7 +44,7 @@ const Login = () => {
               name="email"
               placeholder="Email"
               value={loginInfo.email}
-              className="border m-2 p-2 rounded-md bg-[#161515] h-14 text-white"
+              className="border m-2 p-2 rounded-md bg-[#161515] border-none hover:border-yellow-100 h-14 text-white"
             />
           </div>
           <div>
@@ -46,7 +54,7 @@ const Login = () => {
               name="password"
               placeholder="Password"
               value={loginInfo.password}
-              className="border m-2 p-2 rounded-md bg-[#161515] h-14 text-white"
+              className="border m-2 p-2 rounded-md bg-[#161515] border-none hover:border-orange-500 h-14 text-white"
             />
           </div>
           <div className="text-yellow-50">
@@ -57,7 +65,7 @@ const Login = () => {
           <div className="flex justify-center items-center mt-4">
             <button
               type="submit"
-              className="text-yellow-500 border border-yellow-500 px-4 py-2 rounded hover:bg-yellow-500 hover:text-black"
+              className="font-bold border border-yellow-500 px-4 py-2 rounded bg-yellow-500 text-yellow-50 hover:bg-none hover:text-black"
             >
               LOGIN
             </button>
