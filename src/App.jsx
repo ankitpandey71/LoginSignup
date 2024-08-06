@@ -10,6 +10,7 @@ import Home from "./pages/Home";
 import RefreshHandler from "./utils/RefreshHandler";
 import { useState } from "react";
 import Layout from "./pages/Layout";
+import RegistrationData from "./pages/RegistrationData";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -52,6 +53,14 @@ const App = () => {
             ) : (
               <Navigate to="/login" />
             )
+          }
+        />
+        <Route
+          path="/data"
+          element={
+            <Layout>
+              <RegistrationData />
+            </Layout>
           }
         />
       </Routes>

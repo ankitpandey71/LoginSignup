@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Navbar = () => {
   return (
     <nav className="border-custom-border bg-custom-linear-gradient border-r-2 mt-6 ml-4 mr-4 p-4 rounded-xl">
@@ -25,10 +27,12 @@ const Navbar = () => {
             PLANS
           </a>
           <div className="flex items-center space-x-4">
-            <button className="text-yellow-500 border font-sans text-4xl uppercase font-bold pl-8 pr-8 border-yellow-500 p-2 rounded hover:bg-gray-900 hover:border-yellow-50 hover:text-yellow-50">
-              LOGIN
-            </button>
-            <button className="md:hidden text-yellow-500">
+            <Link to="/login">
+              <button className="text-yellow-500 border font-sans text-4xl uppercase font-bold pl-8 pr-8 border-yellow-500 p-2 rounded hover:bg-gray-900 hover:border-yellow-50 hover:text-yellow-50">
+                LOGIN
+              </button>
+            </Link>
+            <button className=" text-yellow-500">
               <svg
                 className="w-6 h-6"
                 fill="none"

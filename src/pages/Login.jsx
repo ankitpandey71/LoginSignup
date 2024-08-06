@@ -1,11 +1,16 @@
 import { useState } from "react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { Link } from "react-router-dom";
+import axios from "axios";
+import OtpModal from "../components/OtpModal";
 
 const Login = () => {
   const [loginInfo, setLoginInfo] = useState({
     email: "",
     password: "",
   });
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [isOtpModalOpen, setIsOtpModalOpen] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -15,9 +20,51 @@ const Login = () => {
     }));
   };
 
-  const handleLogin = (e) => {
+  if (!OtpModal) {
+    setLoading(false);
+  }
+
+  const handleLogin = async (e) => {
     e.preventDefault();
-    console.log("Logging in with:", loginInfo);
+    setLoading(true);
+
+    setIsOtpModalOpen(true);
+
+    // try {
+    //   const response = await axios.post(
+    //     "http://localhost:8080/login",
+    //     loginInfo
+    //   );
+
+    //   if (response.data.requiresOtp) {
+    //     setIsOtpModalOpen(true);
+    //   } else {
+    //     const { token } = response.data;
+    //     localStorage.setItem("token", token);
+    //     window.location.href = "/data";
+    //   }
+    // } catch (error) {
+    //   console.error("Login error:", error);
+    //   setError("Invalid email or password. Please try again.");
+    // } finally {
+    //   setLoading(false);
+    // }
+  };
+
+  const handleOtpSubmit = async (otp) => {
+    try {
+      const response = await axios.post("", {
+        otp,
+      });
+      const { token } = response.data;
+      localStorage.setItem("token", token);
+      window.location.href = "/data";
+    } catch (error) {
+      console.error("OTP verification error:", error);
+      setError("Invalid OTP. Please try again.");
+    } finally {
+      setIsOtpModalOpen(false);
+    }
   };
 
   return (
@@ -57,6 +104,7 @@ const Login = () => {
               className="border m-2 p-2 rounded-md bg-[#161515] border-none hover:border-orange-500 h-14 text-white"
             />
           </div>
+          {error && <div className="text-red-500">{error}</div>}
           <div className="text-yellow-50">
             <a href="#" className="hover:underline">
               Forgot Password?
@@ -66,13 +114,14 @@ const Login = () => {
             <button
               type="submit"
               className="font-bold border border-yellow-500 px-4 py-2 rounded bg-yellow-500 text-yellow-50 hover:bg-none hover:text-black"
+              disabled={loading}
             >
-              LOGIN
+              {loading ? "Logging in..." : "LOGIN"}
             </button>
           </div>
           <div className="text-yellow-50 mt-4">
             <span>
-              Dont have an account?{" "}
+              Don’t have an account?{" "}
               <Link to="/signup" className="text-yellow-400 hover:underline">
                 Signup
               </Link>
@@ -80,6 +129,11 @@ const Login = () => {
           </div>
         </form>
       </div>
+      <OtpModal
+        isOpen={isOtpModalOpen}
+        onClose={() => setIsOtpModalOpen(false)}
+        onSubmit={handleOtpSubmit}
+      />
     </div>
   );
 };

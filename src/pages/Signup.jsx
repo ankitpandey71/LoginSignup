@@ -24,16 +24,7 @@ const Signup = () => {
   };
 
   const validateForm = () => {
-    const requiredFields = [
-      "fullname",
-      "email",
-      "phone",
-      "gender",
-      "address",
-      "age",
-      "height",
-      "weight",
-    ];
+    const requiredFields = ["fullname", "email", "phone", "gender", "age"];
     for (const field of requiredFields) {
       if (!signupInfo[field]) {
         setError(`Field ${field} is required`);
@@ -47,9 +38,7 @@ const Signup = () => {
   const handleSignup = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      // Implement signup logic here
       console.log("Signing up with:", signupInfo);
-      // Reset form after successful signup
       setSignupInfo({
         fullname: "",
         email: "",
@@ -60,7 +49,7 @@ const Signup = () => {
         height: "",
         weight: "",
         medicalCondition: "",
-        helpDescription: "", // Reset helpDescription
+        helpDescription: "",
       });
     }
   };
