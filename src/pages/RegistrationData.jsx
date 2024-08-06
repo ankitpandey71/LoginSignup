@@ -10,10 +10,12 @@ const RegistrationData = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("https://dummyjson.com/users");
-        setUsers(response.data.users);
-        console.log(response.data.users);
-        setTotalUsers(response.data.users.length);
+        const response = await axios.get(
+          "https://backend-three-phi-42.vercel.app/auth/users"
+        );
+        setUsers(response.data);
+        console.log(response.data);
+        // setTotalUsers(response.data.users.length);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -55,9 +57,7 @@ const RegistrationData = () => {
         <tbody className="bg-[#464646] divide-y divide-gray-200">
           {currentUsers.map((user) => (
             <tr key={user.id}>
-              <td className="px-6 py-4 whitespace-nowrap">
-                {`${user.firstName} ${user.lastName}`}
-              </td>
+              <td className="px-6 py-4 whitespace-nowrap">{user.fullname}</td>
               <td className="px-6 py-4 whitespace-nowrap">{user.email}</td>
               <td className="px-6 py-4 whitespace-nowrap">{user.phone}</td>
               <td className="px-6 py-4 whitespace-nowrap">{user.gender}</td>

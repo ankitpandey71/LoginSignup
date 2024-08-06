@@ -20,42 +20,39 @@ const Login = () => {
     }));
   };
 
-  if (!OtpModal) {
-    setLoading(false);
-  }
-
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
 
-    setIsOtpModalOpen(true);
+    try {
+      const response = await axios.post(
+        "https://backend-three-phi-42.vercel.app/auth/login",
+        loginInfo
+      );
 
-    // try {
-    //   const response = await axios.post(
-    //     "http://localhost:8080/login",
-    //     loginInfo
-    //   );
-
-    //   if (response.data.requiresOtp) {
-    //     setIsOtpModalOpen(true);
-    //   } else {
-    //     const { token } = response.data;
-    //     localStorage.setItem("token", token);
-    //     window.location.href = "/data";
-    //   }
-    // } catch (error) {
-    //   console.error("Login error:", error);
-    //   setError("Invalid email or password. Please try again.");
-    // } finally {
-    //   setLoading(false);
-    // }
+      if (response.data.requiresOtp) {
+        // Show OTP modal if OTP is required
+        setIsOtpModalOpen(true);
+      } else {
+        // Save token and redirect if login is successful
+        const { token } = response.data;
+        localStorage.setItem("token", token);
+        window.location.href = "/data";
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      setError("Invalid email or password. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleOtpSubmit = async (otp) => {
     try {
-      const response = await axios.post("", {
-        otp,
-      });
+      const response = await axios.post(
+        "https://backend-three-phi-42.vercel.app/auth/verify-otp", // Replace with your OTP verification URL
+        { otp }
+      );
       const { token } = response.data;
       localStorage.setItem("token", token);
       window.location.href = "/data";
