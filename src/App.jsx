@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Home from "./pages/Home";
 import RefreshHandler from "./utils/RefreshHandler";
 import { useState } from "react";
 import Layout from "./pages/Layout";
