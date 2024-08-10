@@ -50,7 +50,7 @@ const Login = () => {
   const handleOtpSubmit = async (otp) => {
     try {
       const response = await axios.post(
-        "https://backend-three-phi-42.vercel.app/auth/verify-otp", // Replace with your OTP verification URL
+        "https://backend-three-phi-42.vercel.app/auth/verify-otp",
         { otp }
       );
       const { token } = response.data;
