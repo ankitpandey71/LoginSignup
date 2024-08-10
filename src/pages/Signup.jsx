@@ -1,20 +1,22 @@
 import { useState } from "react";
 import axios from "axios";
 
+const initialSignupInfo = {
+  fullname: "",
+  email: "",
+  phone: "",
+  gender: "",
+  address: "",
+  age: "",
+  height: "",
+  weight: "",
+  medicalCondition: "",
+  needHelp: false,
+  password: "",
+};
+
 const Signup = () => {
-  const [signupInfo, setSignupInfo] = useState({
-    fullname: "",
-    email: "",
-    phone: "",
-    gender: "",
-    address: "",
-    age: "",
-    height: "",
-    weight: "",
-    medicalCondition: "",
-    needHelp: false,
-    password: "",
-  });
+  const [signupInfo, setSignupInfo] = useState(initialSignupInfo);
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
@@ -53,6 +55,8 @@ const Signup = () => {
           // "https://localhost:8080/auth/signup",
           dataToSubmit
         );
+        alert("Signup successful");
+        setSignupInfo(initialSignupInfo);
         console.log("Signup successful:", response.data);
         // Optionally, redirect or handle successful signup
       } catch (error) {

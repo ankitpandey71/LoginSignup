@@ -15,7 +15,7 @@ const RegistrationData = () => {
         );
         setUsers(response.data);
         console.log(response.data);
-        // setTotalUsers(response.data.users.length);
+        setTotalUsers(response.data.length);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
